@@ -50,27 +50,26 @@ export class HashMap {
   }
 
   get(key) {
-    for (let bucket of this.buckets) {
-      let entry = bucket.head;
+    let bucket = this.getBucket(key);
+    let entry = bucket.head;
 
-      while (entry !== null) {
-        if (entry.key === key) return entry.value;
-        entry = entry.next;
-      }
+    while (entry !== null) {
+      if (entry.key === key) return entry.value;
+      entry = entry.next;
     }
 
     return null;
   }
 
   has(key) {
-    for (let bucket of this.buckets) {
-      let entry = bucket.head;
+    let bucket = this.getBucket(key);
+    let entry = bucket.head;
 
-      while (entry !== null) {
-        if (entry.key === key) return true;
-        entry = entry.next;
-      }
+    while (entry !== null) {
+      if (entry.key === key) return true;
+      entry = entry.next;
     }
+    
 
     return false;
   }
