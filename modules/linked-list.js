@@ -30,7 +30,7 @@ export class LinkedList {
 
     if (curr.key === key) {
       this.head = curr.next;
-      return;
+      return curr;
     }
 
     while (curr !== null) {
