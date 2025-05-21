@@ -112,5 +112,22 @@ export class HashMap {
     this.buckets = this.createBuckets(this.capacity);
     this.entryCount = 0;
   }
+
+  keys() {
+    let keysArray = [];
+
+    for (let bucket of this.buckets) {
+      let entry = bucket.head;
+
+      if (entry === null) continue;
+
+      while (entry !== null) {
+        keysArray.push(entry.key);
+        entry = entry.next;
+      }
+    }
+
+    return keysArray;
+  }
 }
 
