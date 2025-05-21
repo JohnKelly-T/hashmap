@@ -146,5 +146,22 @@ export class HashMap {
 
     return valuesArray;
   }
+
+  entries() {
+    let entriesArray = [];
+
+    for (let bucket of this.buckets) {
+      let entry = bucket.head;
+
+      if (entry === null) continue;
+
+      while (entry !== null) {
+        entriesArray.push([entry.key, entry.value]);
+        entry = entry.next;
+      }
+    }
+
+    return entriesArray;
+  }
 }
 
