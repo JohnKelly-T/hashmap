@@ -28,5 +28,19 @@ export class HashMap {
 
     return buckets;
   }
+
+  getBucket(key) {
+    let hashCode = this.hash(key);
+    return this.buckets[hashCode];
+  }
+
+  set(key, value) {
+    let bucket = this.getBucket(key);
+    if (bucket.contains(key)) {
+      bucket.replace(key, value);
+    } else {
+      bucket.append(key, value);
+    }
+  }
 }
 
