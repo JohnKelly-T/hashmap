@@ -55,4 +55,16 @@ export class LinkedList {
 
     return false;
   }
+
+  replace(key, value) {
+    let curr = this.head;
+
+    while (curr !== null) {
+      if (curr.key === key) {
+        curr.value = value;
+        break;
+      }
+      curr = curr.next;
+    }
+  }
 }
