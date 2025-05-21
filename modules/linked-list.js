@@ -23,4 +23,26 @@ export class LinkedList {
 
     curr.next = node;
   }
+
+  remove(key) {
+    let curr = this.head;
+    let prev = this.head;
+
+    if (curr.key === key) {
+      this.head = curr.next;
+      return;
+    }
+
+    while (curr !== null) {
+      if (curr.key === key) break;
+      prev = curr;
+      curr = curr.next;
+    }
+
+    if (curr !== null) {
+      prev.next = curr.next;
+    } 
+
+    return curr;
+  }
 }
