@@ -5,6 +5,7 @@ export class HashMap {
     this.capacity = 16;
     this.loadfactor = 0.75;
     this.buckets = this.createBuckets(this.capacity);
+    this.entryCount = 0;
   }
 
   hash(key) {
@@ -13,7 +14,7 @@ export class HashMap {
     const primeNumber = 31;
     for (let i = 0; i < key.length; i++) {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
-      hashCode = hashCode % 16;
+      hashCode = hashCode % this.capacity;
     }
 
     return hashCode;
@@ -40,7 +41,30 @@ export class HashMap {
       bucket.replace(key, value);
     } else {
       bucket.append(key, value);
+      this.entryCount++;
     }
+
+    if (this.entryCount > (this.capacity * this.loadfactor)) {
+      this.growBuckets();
+    }
+  }
+
+  growBuckets() {
+    this.capacity *= 2;
+    let newBucket = this.createBuckets(this.capacity);
+    for (let bucket of this.buckets) {
+      let node = bucket.head;
+
+      if (node === null) continue;
+
+      while (node !== null) {
+        let hashCode = this.hash(node.key);
+        newBucket[hashCode].append(node.key, node.value);
+        node = node.next;
+      }
+    }
+
+    this.buckets = newBucket;
   }
 }
 
