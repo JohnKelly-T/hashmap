@@ -107,5 +107,10 @@ export class HashMap {
   length() {
     return this.entryCount;
   }
+
+  clear() {
+    this.buckets = this.createBuckets(this.capacity);
+    this.entryCount = 0;
+  }
 }
 
