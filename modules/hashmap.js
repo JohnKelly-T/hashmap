@@ -62,6 +62,19 @@ export class HashMap {
     return null;
   }
 
+  has(key) {
+    for (let bucket of this.buckets) {
+      let entry = bucket.head;
+
+      while (entry !== null) {
+        if (entry.key === key) return true;
+        entry = entry.next;
+      }
+    }
+
+    return false;
+  }
+
   growBuckets() {
     this.capacity *= 2;
     let newBucket = this.createBuckets(this.capacity);
