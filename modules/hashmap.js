@@ -103,5 +103,9 @@ export class HashMap {
 
     this.buckets = newBucket;
   }
+
+  length() {
+    return this.entryCount;
+  }
 }
 
