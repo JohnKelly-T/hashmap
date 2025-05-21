@@ -74,6 +74,15 @@ export class HashMap {
     return false;
   }
 
+  remove(key) {
+    let bucket = this.getBucket(key);
+    let removedEntry = bucket.remove(key);
+
+    if (removedEntry !== null) return true;
+
+    return false;
+  }
+
   growBuckets() {
     this.capacity *= 2;
     let newBucket = this.createBuckets(this.capacity);
