@@ -45,4 +45,14 @@ export class LinkedList {
 
     return curr;
   }
+
+  contains(key) {
+    let curr = this.head;
+    while (curr !== null) {
+      if (curr.key === key) return true;
+      curr = curr.next;
+    }
+
+    return false;
+  }
 }
