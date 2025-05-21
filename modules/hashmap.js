@@ -1,8 +1,10 @@
+import { LinkedList } from "./linked-list.js";
 
 export class HashMap {
   constructor() {
     this.capacity = 16;
     this.loadfactor = 0.75;
+    this.buckets = this.createBuckets(this.capacity);
   }
 
   hash(key) {
@@ -16,5 +18,15 @@ export class HashMap {
 
     return hashCode;
   } 
+
+  createBuckets(size) {
+    let buckets = [];
+    for (let i = 0; i < size; i++) {
+      let bucket = new LinkedList();
+      buckets.push(bucket);
+    }
+
+    return buckets;
+  }
 }
 
