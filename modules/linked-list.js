@@ -28,6 +28,10 @@ export class LinkedList {
     let curr = this.head;
     let prev = this.head;
 
+    if (curr === null) {
+      return curr;
+    }
+
     if (curr.key === key) {
       this.head = curr.next;
       return curr;
