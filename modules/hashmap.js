@@ -78,7 +78,10 @@ export class HashMap {
     let bucket = this.getBucket(key);
     let removedEntry = bucket.remove(key);
 
-    if (removedEntry !== null) return true;
+    if (removedEntry !== null) {
+      this.entryCount--;
+      return true;
+    } 
 
     return false;
   }
