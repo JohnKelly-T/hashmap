@@ -129,5 +129,22 @@ export class HashMap {
 
     return keysArray;
   }
+
+  values() {
+    let valuesArray = [];
+
+    for (let bucket of this.buckets) {
+      let entry = bucket.head;
+
+      if (entry === null) continue;
+
+      while (entry !== null) {
+        valuesArray.push(entry.value);
+        entry = entry.next;
+      }
+    }
+
+    return valuesArray;
+  }
 }
 
