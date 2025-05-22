@@ -79,3 +79,10 @@ console.log(myHashMap.entries()); // Output: [['name', 'Alice'], ['city', 'New Y
 
 myHashMap.clear();
 console.log(myHashMap.length());    // Output: 0
+```
+
+Run the script using 
+
+```bash
+node index.js
+```
